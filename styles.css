@@ -1,0 +1,190 @@
+/* styles/style.css */
+
+/* Menu de Navegação */
+
+/* Estilos para o corpo */
+html, body{
+    height: 100%;
+    
+}
+body {
+    height: 100%;
+    padding-top: 10px; /* Espaçamento para não sobrepor o menu */
+    background-image:linear-gradient(
+        #1290A7 35%, #29A988, #3FBE6D, #53D453, #6CEC37 
+         );
+    display: grid;
+    place-content: center;
+}
+
+
+/* Menu */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    background-color: #1290A7;
+}
+  .subtitulo {
+      font-family: "Outfit", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 200;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
+      
+    }
+    .title{
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-size: 220px;
+        color: #ffffff;
+    }
+    .nav-link{
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: normal;
+        font-weight: bold;
+    }
+    .brand{
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-size: 30px;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .intro{
+       padding-top: 700px; 
+       
+    }
+    /*Circle*/
+
+@keyframes riseAnimation {
+    0% {
+        transform: translate(-50%, 100%); /* Começa abaixo da tela */
+    }
+    100% {
+        transform: translate(-50%, 0); /* Posição final */
+    }
+}
+.circle {
+    width: 540px; 
+    height: 275px; 
+    background-image: radial-gradient(circle, #6832dd, #6AB7ED); /* Gradiente */
+    position: absolute; /* Posição que sobrepoe o nome */
+    /* Curvatura das bordas*/
+    border-radius: 50%; 
+    border-top-left-radius: 2000px;
+    border-top-right-radius: 2000px;
+    margin-top: 19%;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%); /* Mantém a centralização */
+    z-index: 1;
+    animation: riseAnimation 1s forwards; /* Adiciona a animação */
+}
+
+/* Componentes */
+.componentes{ 
+   padding-top: 10px;
+    color: #ffffff;
+}
+/* Cadastro de Receita */
+.cadastrar-receita{
+    background-color: #1290A7;
+}
+/* Container principal */
+.container {
+    max-width: 800px; /* Define uma largura máxima para o conteúdo */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Estilos para seções */
+section {
+    background-color: #ffffff; /* Cor de fundo branca */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Margem abaixo das seções */
+}
+
+/* Estilos para títulos de seções */
+h2 {
+    color: #343a40; /* Cor dos títulos */
+    margin-bottom: 15px; /* Margem abaixo do título */
+}
+
+/* Estilos para formulários */
+.form-group {
+    margin-bottom: 15px; /* Margem abaixo dos grupos de formulário */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Cor de fundo do botão */
+    border: none; /* Remove borda */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Cor de fundo do botão de perigo */
+    border: none; /* Remove borda */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor do botão de perigo ao passar o mouse */
+}
+
+/* Estilos para tabelas */
+.table {
+    width: 100%; /* Largura total da tabela */
+    margin: 20px 0; /* Margem acima e abaixo da tabela */
+}
+
+.table th, .table td {
+    padding: 12px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinhamento do texto à esquerda */
+    border-bottom: 1px solid #dee2e6; /* Borda inferior leve */
+}
+
+.table th {
+    background-color: #f1f1f1; /* Cor de fundo dos cabeçalhos */
+    font-weight: bold; /* Negrito nos cabeçalhos */
+}
+
+/* Estilos para acompanhar saldo */
+#saldo {
+    font-size: 1.2rem; /* Tamanho da fonte do saldo */
+    font-weight: bold; /* Negrito no saldo */
+    color: #28a745; /* Cor verde para saldo positivo */
+}
+
+/* Estilos para relatório de gastos */
+#relatorio {
+    margin-top: 15px; /* Margem acima do relatório */
+    font-size: 1rem; /* Tamanho da fonte do relatório */
+    color: #343a40; /* Cor do texto do relatório */
+}
+
+
+/* Rodapé */
+.footer {
+    background-color: #6832dd; /* Cor de fundo do rodapé */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding: 0.5px 0.5px; /* Espaçamento interno */
+    width: 100%; /* Faz o rodapé ocupar toda a largura da tela */
+    position: fixed; /* Fixa o rodapé */
+    bottom: 0; /* Posiciona na parte inferior da página */
+    left: 0;
+    z-index: 2; /* Certifica que o rodapé está acima de outros elementos */
+    box-sizing: border-box; /* Inclui o padding na largura total */
+}

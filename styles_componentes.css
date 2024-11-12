@@ -1,0 +1,192 @@
+/* styles/style.css */
+
+/* Menu de Navegação */
+
+/* Estilos para o corpo */
+html, body{
+    height: 100%;
+    
+}
+body {
+    height: 100%;
+    padding-top: 10px; /* Espaçamento para não sobrepor o menu */
+    background-image: linear-gradient(
+        #1290A7 35%, #6832dd
+    );
+
+    display: grid;
+    place-content: center;
+}
+
+/* Menu */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    background-color: #1290A7;
+}
+
+  .subtitulo {
+      font-family: "Outfit", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 200;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
+      
+    }
+    .subtitle{
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: normal;
+        font-weight: bold;
+        color: #ffff;
+    }
+    .paragraf{
+    
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 30;
+        font-style: normal;
+        font-weight: bold;
+        color: #ffff;
+    }
+    .nav-link{
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-weight: 100;
+        font-style: normal;
+        font-weight: bold;
+    }
+    .brand{
+        font-family: "Roboto Mono", monospace;
+        font-optical-sizing: auto;
+        font-size: 30px;
+        justify-content: center;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .intro{
+       padding-top: 700px; 
+       
+    }
+
+/* Componentes */
+.componentes{ 
+    background: none; /* Remove o background */
+    text-align: left; /* Alinha o conteúdo à esquerda */
+    padding: 30px; /* Opcional: Adicione algum espaçamento */
+    margin-left: 0; /* Ajuste a margem esquerda se necessário */
+    padding-top: 10px;
+    color: #ffffff;
+    box-shadow: none; /* Remove qualquer sombra de caixa */
+    text-shadow: none; /* Remove qualquer sombra de texto */
+}
+.componentes2{ 
+    text-align: left; /* Alinha o conteúdo à esquerda */
+    padding: 50px; /* Opcional: Adicione algum espaçamento */
+    margin-left: 0; /* Ajuste a margem esquerda se necessário */
+    color: #000;
+    border-radius: 20px;
+}
+
+/* Cadastro de Receita */
+.cadastrar-receita{
+    background-color: #1290A7;
+}
+/* Container principal */
+.container {
+    max-width: 800px; /* Define uma largura máxima para o conteúdo */
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Estilos para seções */
+section {
+    background-color: #ffffff; /* Cor de fundo branca */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 20px; /* Margem abaixo das seções */
+}
+
+/* Estilos para títulos de seções */
+h2 {
+    color: #343a40; /* Cor dos títulos */
+    margin-bottom: 15px; /* Margem abaixo do título */
+}
+
+/* Estilos para formulários */
+.form-group {
+    margin-bottom: 15px; /* Margem abaixo dos grupos de formulário */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Cor de fundo do botão */
+    border: none; /* Remove borda */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Cor de fundo do botão de perigo */
+    border: none; /* Remove borda */
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Cor do botão de perigo ao passar o mouse */
+}
+
+/* Estilos para tabelas */
+.table {
+    width: 100%; /* Largura total da tabela */
+    margin: 20px 0; /* Margem acima e abaixo da tabela */
+}
+
+.table th, .table td {
+    padding: 12px; /* Espaçamento interno nas células */
+    text-align: left; /* Alinhamento do texto à esquerda */
+    border-bottom: 1px solid #dee2e6; /* Borda inferior leve */
+}
+
+.table th {
+    background-color: #f1f1f1; /* Cor de fundo dos cabeçalhos */
+    font-weight: bold; /* Negrito nos cabeçalhos */
+}
+
+/* Estilos para acompanhar saldo */
+#saldo {
+    font-size: 1.2rem; /* Tamanho da fonte do saldo */
+    font-weight: bold; /* Negrito no saldo */
+    color: #28a745; /* Cor verde para saldo positivo */
+}
+
+/* Estilos para relatório de gastos */
+#relatorio {
+    margin-top: 15px; /* Margem acima do relatório */
+    font-size: 1rem; /* Tamanho da fonte do relatório */
+    color: #343a40; /* Cor do texto do relatório */
+}
+
+
+/*Rodapé*/
+.footer {
+    width: 100%; /* Garante que o footer ocupe 100% da largura */
+    padding: 20px; /* Espaçamento interno */
+    position: fixed; /* Fixa o footer no fundo da página */
+    bottom: 0; /* Coloca o footer na parte inferior */
+    left: 0; /* Alinha o footer à esquerda */
+    background-color: #6832dd; /* Cor de fundo do rodapé */
+    color: white; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding-top: 15px;
+    bottom: 0px; /* Posiciona na parte inferior da página */
+    left: 0;
+    z-index: 2; /* Certifica que o rodapé está acima de outros elementos */
+}
