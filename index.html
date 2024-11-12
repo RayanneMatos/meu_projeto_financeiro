@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Gestão Financeira</h1>
+        <h2>Saldo Total: R$ {{ balance }}</h2>
+        <a href="{{ url_for('add_transaction') }}" class="btn btn-primary mt-3">Adicionar Receita ou Despesa</a>
+        <a href="{{ url_for('report') }}" class="btn btn-secondary mt-3">Ver Relatório</a>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2024 Meu Projeto Financeiro. Todos os direitos reservados.</p>
+    </footer>
+    
+</body>
+
+
+</html>
