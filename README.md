@@ -27,16 +27,50 @@ Um aplicativo web simples para gerenciamento financeiro pessoal, que permite reg
 ## Instalação
 
 1. Clone este repositório:
+-Execute o comando abaixo para clonar o repositório em sua máquina:
+git clone https://github.com/seuusuario/meu_projeto_financeiro.git
+- Após clonar, navegue até a pasta do projeto:
+cd meu_projeto_financeiro
 
-Instalar as dependências:
+3. Instalar as dependências:
 
-Copiar código
-pip install -r requirements.txt
-Uso
-Início do servidor Flask:
+**Python 3**
+1. Verifique se o Python 3 já está instalado
+No terminal ou linha de comando, execute:
+python3 --version
+Se o Python 3 não estiver instalado ou se você estiver usando uma versão desatualizada, siga as etapas abaixo.
 
-python app.py
-Acesse o aplicativo em http://127.0.0.1:5000.
+2. Instale o Python 3
+-Windows:
+Baixe o instalador do Python no site oficial.
+Execute o instalador e marque a opção Add Python to PATH antes de continuar com a instalação.
+-Linux (via terminal):
+Atualize seus pacotes e instale o Python:
+sudo apt update
+sudo apt install python3
+-Mac:
+Utilize o Homebrew:
+brew install python3
 
-Licença
-Este projeto está sob licença MIT. Veja o arquivo LICENSE para mais detalhes.
+3. Verifique o gerenciador de pacotes pip
+Certifique-se de que o pip (gerenciador de pacotes do Python) está instalado:
+pip3 --version
+
+Se o pip não estiver instalado, execute:
+python3 -m ensurepip --upgrade
+
+4. Instale o Flask
+- Crie e ative um ambiente virtual (opcional, mas recomendado)
+No diretório do projeto, crie um ambiente virtual para evitar conflitos de dependências:
+python3 -m venv venv
+Ative o ambiente virtual:
+- Windows:
+venv\Scripts\activate
+- Linux/Mac:
+source venv/bin/activate
+
+Com o ambiente virtual ativado (ou diretamente, se não for usar um), instale o Flask usando o pip:
+pip install flask
+
+Confirme que o Flask foi instalado corretamente:
+flask --version
