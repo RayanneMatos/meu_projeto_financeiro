@@ -28,7 +28,7 @@ Um aplicativo web simples para gerenciamento financeiro pessoal, que permite reg
 
 1. Clone este repositório:
 -Execute o comando abaixo para clonar o repositório em sua máquina:
-git clone https://github.com/seuusuario/meu_projeto_financeiro.git
+git clone https://github.com/RayanneMatos/meu_projeto_financeiro.git
 - Após clonar, navegue até a pasta do projeto:
 cd meu_projeto_financeiro
 
