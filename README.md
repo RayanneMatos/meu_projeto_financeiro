@@ -59,7 +59,8 @@ pip3 --version
 Se o pip não estiver instalado, execute:
 python3 -m ensurepip --upgrade
 
-4. Instale o Flask
+**Flask**
+1. Instale o Flask
 - Crie e ative um ambiente virtual (opcional, mas recomendado)
 No diretório do projeto, crie um ambiente virtual para evitar conflitos de dependências:
 python3 -m venv venv
