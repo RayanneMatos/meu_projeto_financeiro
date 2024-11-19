@@ -1,104 +1,98 @@
-/* styles/style.css */
-
 /* Menu de Navegação */
 
 /* Estilos para o corpo */
-html, body{
-    height: 100%;
-    
+html, body {
+    height: 100%; /* Define que o HTML e o corpo ocupam 100% da altura da tela */
 }
 body {
-    height: 100%;
-    padding-top: 10px; /* Espaçamento para não sobrepor o menu */
-    background-image:linear-gradient(
-        #1290A7 35%, #29A988, #3FBE6D, #53D453, #6CEC37 
-         );
-    display: grid;
-    place-content: center;
+    height: 100%; /* Garante que o corpo ocupe toda a altura */
+    padding-top: 10px; /* Adiciona espaço no topo para evitar sobreposição do menu */
+    background-image: linear-gradient(
+        #1290A7 35%, #29A988, #3FBE6D, #53D453, #6CEC37
+    ); /* Cria um gradiente de cores como fundo */
+    display: grid; /* Define um layout baseado em grade */
+    place-content: center; /* Centraliza o conteúdo horizontal e verticalmente */
 }
-
 
 /* Menu */
-
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 15px 20px;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    background-color: #1290A7;
+    position: fixed; /* Fixa o menu no topo da tela */
+    top: 0; /* Posiciona no topo */
+    width: 100%; /* Faz o menu ocupar toda a largura da tela */
+    padding: 15px 20px; /* Adiciona espaçamento interno */
+    z-index: 1000; /* Garante que o menu fique acima de outros elementos */
+    display: flex; /* Usa layout flexível para organizar itens */
 }
-  .subtitulo {
-      font-family: "Outfit", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 200;
-      font-style: normal;
-      font-variation-settings: "wdth" 100;
-      
+    .subtitulo {
+        font-family: "Outfit", sans-serif; /* Define a fonte "Outfit" */
+        font-optical-sizing: auto; /* Ajusta automaticamente o tamanho óptico */
+        font-weight: 200; /* Define o peso da fonte como leve */
+        font-style: normal; /* Define o estilo da fonte como normal */
+        font-variation-settings: "wdth" 100; /* Configura a largura da fonte */
     }
-    .title{
-        font-family: "Playfair Display", serif;
+    
+    .title {
+        font-family: "Playfair Display", serif; /* Fonte serifada para título */
+        font-optical-sizing: auto; /* Ajuste automático óptico */
+        font-size: 220px; /* Tamanho grande para o título */
+        color: #ffffff; /* Cor branca para o texto */
+    }
+    
+    .nav-link {
+        font-family: "Roboto Mono", monospace; /* Fonte monoespaçada para links */
         font-optical-sizing: auto;
-        font-size: 220px;
-        color: #ffffff;
+        font-weight: bold; /* Texto em negrito */
+        font-style: normal; /* Define o estilo como normal */
     }
-    .nav-link{
-        font-family: "Roboto Mono", monospace;
+    .brand {
+        font-family: "Roboto Mono", monospace; /* Define a fonte da marca */
         font-optical-sizing: auto;
-        font-weight: 100;
-        font-style: normal;
-        font-weight: bold;
+        font-size: 30px; /* Define o tamanho da fonte */
+        justify-content: center; /* Centraliza o texto */
+        color: #ffffff; /* Cor branca para o texto */
+        font-weight: bold; /* Define a fonte como negrito */
     }
-    .brand{
-        font-family: "Roboto Mono", monospace;
-        font-optical-sizing: auto;
-        font-size: 30px;
-        justify-content: center;
-        color: #ffffff;
-        font-weight: bold;
+    
+    .intro {
+        padding-top: 700px; /* Adiciona espaço acima da introdução */
     }
-    .intro{
-       padding-top: 700px; 
-       
+    
+    /* Círculo decorativo */
+    @keyframes riseAnimation {
+        0% {
+            transform: translate(-50%, 100%); /* Começa fora da tela, na parte inferior */
+        }
+        100% {
+            transform: translate(-50%, 0); /* Sobe até a posição final */
+        }
     }
-    /*Circle*/
+    .circle {
+        width: 540px; /* Define a largura do círculo */
+        height: 275px; /* Define a altura do círculo */
+        background-image: radial-gradient(circle, #6832dd, #6AB7ED); /* Gradiente no círculo */
+        position: absolute; /* Sobrepõe outros elementos */
+        border-radius: 50%; /* Faz o elemento ter bordas arredondadas */
+        border-top-left-radius: 2000px; /* Curva extra nas bordas superiores */
+        border-top-right-radius: 2000px;
+        margin-top: 19%; /* Define espaçamento superior */
+        top: 0px; /* Posiciona no topo */
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Mantém a centralização */
+        z-index: 1; /* Prioriza o círculo sobre outros elementos */
+        animation: riseAnimation 1s forwards; /* Aplica a animação de subida */
+    }
+    
+    /* Componentes */
+    .componentes {
+        padding-top: 10px; /* Adiciona espaço no topo */
+        color: #ffffff; /* Define a cor do texto como branca */
+    }
 
-@keyframes riseAnimation {
-    0% {
-        transform: translate(-50%, 100%); /* Começa abaixo da tela */
-    }
-    100% {
-        transform: translate(-50%, 0); /* Posição final */
-    }
-}
-.circle {
-    width: 540px; 
-    height: 275px; 
-    background-image: radial-gradient(circle, #6832dd, #6AB7ED); /* Gradiente */
-    position: absolute; /* Posição que sobrepoe o nome */
-    /* Curvatura das bordas*/
-    border-radius: 50%; 
-    border-top-left-radius: 2000px;
-    border-top-right-radius: 2000px;
-    margin-top: 19%;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%); /* Mantém a centralização */
-    z-index: 1;
-    animation: riseAnimation 1s forwards; /* Adiciona a animação */
+/* Botão de cadastro de receita */
+.cadastrar-receita {
+    background-color: #1290A7; /* Cor de fundo do botão */
 }
 
-/* Componentes */
-.componentes{ 
-   padding-top: 10px;
-    color: #ffffff;
-}
-/* Cadastro de Receita */
-.cadastrar-receita{
-    background-color: #1290A7;
-}
 /* Container principal */
 .container {
     max-width: 800px; /* Define uma largura máxima para o conteúdo */
@@ -176,11 +170,11 @@ h2 {
 
 
 /* Rodapé */
-.footer {
+.footer{
     background-color: #6832dd; /* Cor de fundo do rodapé */
     color: white; /* Cor do texto */
     text-align: center; /* Centraliza o texto */
-    padding: 0.5px 0.5px; /* Espaçamento interno */
+    padding-top: 15px; /* Espaçamento interno */
     width: 100%; /* Faz o rodapé ocupar toda a largura da tela */
     position: fixed; /* Fixa o rodapé */
     bottom: 0; /* Posiciona na parte inferior da página */
