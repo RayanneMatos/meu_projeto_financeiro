@@ -2,14 +2,68 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Relatório de Transações</title>
+    <title>Capitall</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <link rel="stylesheet" href="/static/styles/styles_componentes.css">
+    <link rel="stylesheet" href="/static/components/menu.html">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/static/bootstrap/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/static/bootstrap/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/static/bootstrap/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/bootstrap/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/bootstrap/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/static/bootstrap/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/static/bootstrap/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/bootstrap/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/static/bootstrap/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/bootstrap/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/static/bootstrap/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/bootstrap/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/bootstrap/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/static/bootstrap/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+        <!-- Fontes -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ url_for('index') }}"><h1 class="brand"><img src="/static/bootstrap/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">  Capitall</h1></a></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Seções -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav-underline justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{{ url_for('add_transaction') }}">Nova Transação</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{{ url_for('report') }}">Relatórios</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <div class="container mt-5">
-        <h1>Relatório de Transações</h1>
+        <h1 class="subtitle">Relatório de Transações</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -33,13 +87,13 @@
 
         <!-- Adicionando o Saldo -->
         <div class="mt-4">
-            <h2>Saldo Total: R$ {{ balance }}</h2>
+            <h2 class="subtitle">Saldo Total: R$ {{ balance }}</h2>
         </div>
 
         <!-- Adicionando a área para a orientação -->
         <div id="orientacao" class="mt-4 alert alert-info" style="display: none;"></div>
 
-        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
+        <a href="{{ url_for('index') }}" class="btn btn-dark" style="border-radius: 20px; padding: 10px 15px;">Voltar</a>
     </div>
 
     <script>
@@ -64,7 +118,7 @@
     </script>
     
     <footer class="footer">
-        <p>© 2024 Meu Projeto Financeiro. Todos os direitos reservados.</p>
+        <p>Capitall. © 2024</p>
     </footer>
 </body>
 </html>
