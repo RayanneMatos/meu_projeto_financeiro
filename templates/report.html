@@ -2,99 +2,69 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adicionar Transação</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Relatório de Transações</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Adicionar Transação</h1>
+        <h1>Relatório de Transações</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                    <tr>
+                        <td>{{ transaction.type }}</td>
+                        <td>R$ {{ transaction.amount }}</td>
+                        <td>{{ transaction.description }}</td>
+                        <td>{{ transaction.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        <form action="{{ url_for('add_transaction') }}" method="POST">
-            <!-- Tipo de Transação -->
-            <div class="form-group">
-                <label for="type" class="paragraf">Tipo de Transação</label>
-                <select name="type" id="type" class="form-select paragraf" required style="border-radius: 20px; padding: 15px;">
-                    <option value="receita" class="paragraf" style="color: black;">Receita</option>
-                    <option value="despesa" class="paragraf" style="color: black;">Despesa</option>
-                </select>
-            </div>
+        <!-- Adicionando o Saldo -->
+        <div class="mt-4">
+            <h2>Saldo Total: R$ {{ balance }}</h2>
+        </div>
 
-            <!-- Valor da Transação -->
-            <div class="form-group mt-3">
-                <label for="amount" class="paragraf">Valor</label>
-                <input type="text" name="amount" id="amount" class="form-control paragraf" placeholder="Digite o valor" required style="border-radius: 20px; padding: 15px;">
-            </div>
+        <!-- Adicionando a área para a orientação -->
+        <div id="orientacao" class="mt-4 alert alert-info" style="display: none;"></div>
 
-            <!-- Descrição da Transação -->
-            <div class="form-group mt-3">
-                <label for="description" class="paragraf">Descrição</label>
-                <input type="text" name="description" id="description" class="form-control paragraf" placeholder="Descrição da transação" required style="border-radius: 20px; padding: 15px;">
-            </div>
-
-            <!-- Categoria da Receita -->
-            <div class="form-group mt-3" id="categoriaReceitaDiv">
-                <label for="categoriaReceita" class="paragraf">Categoria da Receita</label>
-                <select name="categoriaReceita" id="categoriaReceita" class="form-select paragraf" style="border-radius: 20px; padding: 15px;">
-                    <option selected class="paragraf" style="color: black;">Selecione uma categoria</option>
-                    <option value="Salário" class="paragraf" style="color: black;">Salário</option>
-                    <option value="Freelance" class="paragraf" style="color: black;">Freelance</option>
-                    <option value="Investimentos" class="paragraf" style="color: black;">Investimentos</option>
-                </select>
-            </div>
-
-            <!-- Categoria da Despesa -->
-            <div class="form-group mt-3" id="categoriaDespesaDiv" style="display: none;">
-                <label for="categoriaDespesa" class="paragraf">Categoria da Despesa</label>
-                <select name="categoriaDespesa" id="categoriaDespesa" class="form-select paragraf" style="border-radius: 20px; padding: 15px;">
-                    <option value="" class="paragraf" style="color: black;">Selecione uma categoria</option>
-                    <option value="Alimentação" class="paragraf" style="color: black;">Alimentação</option>
-                    <option value="Transporte" class="paragraf" style="color: black;">Transporte</option>
-                    <option value="Lazer" class="paragraf" style="color: black;">Lazer</option>
-                    <option value="Saúde" class="paragraf" style="color: black;">Saúde</option>
-                    <option value="Educação" class="paragraf" style="color: black;">Educação</option>
-                    <option value="Outros" class="paragraf" style="color: black;">Outros</option>
-                </select>
-            </div>
-
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-primary mt-4" style="border-radius: 20px; padding: 10px 20px;">Cadastrar Transação</button>
-            <a href="{{ url_for('index') }}" class="btn btn-danger mt-4" style="border-radius: 20px; padding: 10px 20px;">Voltar</a>
-        </form>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar</a>
     </div>
 
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
     <script>
-        // Script para alternar a exibição de categorias com base no tipo de transação
-        document.getElementById('type').addEventListener('change', function() {
-            const categoriaReceitaDiv = document.getElementById('categoriaReceitaDiv');
-            const categoriaDespesaDiv = document.getElementById('categoriaDespesaDiv');
-            
-            if (this.value === 'receita') {
-                categoriaReceitaDiv.style.display = 'block';
-                categoriaDespesaDiv.style.display = 'none';
+            // Função para gerar orientação
+        function gerarOrientacao(receitaTotal, despesaTotal) {
+            const orientacaoDiv = document.getElementById('orientacao');
+            if (receitaTotal > despesaTotal) {
+                orientacaoDiv.innerText = "Recomendamos investir inicialmente pela reserva de emergência.";
+            } else if (despesaTotal > receitaTotal) {
+                orientacaoDiv.innerText = "Sugerimos congelar os gastos para quitar as dívidas.";
             } else {
-                categoriaReceitaDiv.style.display = 'none';
-                categoriaDespesaDiv.style.display = 'block';
+                orientacaoDiv.innerText = "Economizar para começar a investir.";
             }
-        });
+            orientacaoDiv.style.display = 'block'; // Exibe a orientação
+        }
 
-        // Função para formatar o valor como float com 2 casas decimais e adicionar ",00" quando necessário
-        document.getElementById('amount').addEventListener('input', function(event) {
-            let value = event.target.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
-            if (value) {
-                value = (parseInt(value) / 100).toFixed(2).replace(',', '.'); // Formata para moeda
-            } else {
-                value = '0.00';
-            }
-            event.target.value = value;
-        });
+        // Garantir que os valores sejam numéricos
+        const receitaTotal = parseFloat("{{ receitaTotal }}");
+        const despesaTotal = parseFloat("{{ despesaTotal }}");
+
+        gerarOrientacao(receitaTotal, despesaTotal);
     </script>
-
+    
     <footer class="footer">
-        <p>&copy; 2024 Meu Projeto Financeiro. Todos os direitos reservados.</p>
+        <p>© 2024 Meu Projeto Financeiro. Todos os direitos reservados.</p>
     </footer>
-
 </body>
 </html>
