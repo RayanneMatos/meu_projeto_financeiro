@@ -1,3 +1,9 @@
+#Flask cria a aplicação
+#render_template: Função para renderizar templates HTML
+#request: Usada para acessar os dados enviados pelo usuário, como os dados de um formulário.
+#redirect e url_for: Usadas para redirecionar o usuário para outra página da aplicação.
+#datetime: Usada para capturar a data e hora da transação.
+
 from flask import Flask, render_template, request, redirect, url_for
 from datetime import datetime
 

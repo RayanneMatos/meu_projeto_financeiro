@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Transações</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capitall</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
     <link rel="stylesheet" href="/static/styles/styles_componentes.css">
     <link rel="stylesheet" href="/static/components/menu.html">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
@@ -40,85 +43,77 @@
 
 </head>
 <body>
+    <div class="container my-5">
+        <h1 class="text-center">Relatório de Transações</h1>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-     <span class="navbar-brand mb-0 h1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ url_for('index') }}"><h1 class="brand"><img src="/static/bootstrap/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">  Capitall</h1></a></span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Seções -->
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav nav-underline justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link link-light" href="{{ url_for('add_transaction') }}">Nova Transação</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link link-light" href="{{ url_for('report') }}">Relatórios</a>
-        </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+        <!-- Resumo do saldo -->
+        <div class="alert alert-primary text-center mt-4">
+            <h3>Saldo Total: R$ {{ balance | round(2) }}</h3>
+            <p>{{ message }}</p>
+        </div>
 
-    <div class="container mt-5">
-        <h1 class="subtitle">Relatório de Transações</h1>
-        <table class="table table-bordered">
-            <thead>
+        <!-- Resumo de receitas e despesas -->
+        <div class="row text-center mb-4">
+            <div class="col-md-6">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Receitas Totais</h5>
+                        <p class="card-text fs-4">R$ {{ receitaTotal | round(2) }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-danger">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Despesas Totais</h5>
+                        <p class="card-text fs-4">R$ {{ despesaTotal | round(2) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de transações -->
+        <h2 class="text-center my-4">Detalhes das Transações</h2>
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <th>Tipo</th>
-                    <th>Valor</th>
-                    <th>Descrição</th>
                     <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Valor (R$)</th>
                 </tr>
             </thead>
             <tbody>
                 {% for transaction in transactions %}
-                    <tr>
-                        <td>{{ transaction.type }}</td>
-                        <td>R$ {{ transaction.amount }}</td>
-                        <td>{{ transaction.description }}</td>
-                        <td>{{ transaction.date }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>
+                        {% if transaction.type == 'receita' %}
+                            <span class="text-success">Receita</span>
+                        {% else %}
+                            <span class="text-danger">Despesa</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if transaction.type == 'receita' %}
+                            <span class="text-success">+ {{ transaction.amount | round(2) }}</span>
+                        {% else %}
+                            <span class="text-danger">- {{ transaction.amount | round(2) }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <!-- Adicionando o Saldo -->
-        <div class="mt-4">
-            <h2 class="subtitle">Saldo Total: R$ {{ balance }}</h2>
+        <!-- Botões de navegação -->
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Voltar ao Início</a>
+            <a href="/add_transaction" class="btn btn-primary">Adicionar Nova Transação</a>
         </div>
-
-        <!-- Adicionando a área para a orientação -->
-        <div id="orientacao" class="mt-4 alert alert-info" style="display: none;"></div>
-
-        <a href="{{ url_for('index') }}" class="btn btn-dark" style="border-radius: 20px; padding: 10px 15px;">Voltar</a>
     </div>
 
-    <script>
-            // Função para gerar orientação
-        function gerarOrientacao(receitaTotal, despesaTotal) {
-            const orientacaoDiv = document.getElementById('orientacao');
-            if (receitaTotal > despesaTotal) {
-                orientacaoDiv.innerText = "Recomendamos investir inicialmente pela reserva de emergência.";
-            } else if (despesaTotal > receitaTotal) {
-                orientacaoDiv.innerText = "Sugerimos congelar os gastos para quitar as dívidas.";
-            } else {
-                orientacaoDiv.innerText = "Economizar para começar a investir.";
-            }
-            orientacaoDiv.style.display = 'block'; // Exibe a orientação
-        }
-
-        // Garantir que os valores sejam numéricos
-        const receitaTotal = parseFloat("{{ receitaTotal }}");
-        const despesaTotal = parseFloat("{{ despesaTotal }}");
-
-        gerarOrientacao(receitaTotal, despesaTotal);
-    </script>
-    
-    <footer class="footer">
-        <p>Capitall. © 2024</p>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

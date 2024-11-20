@@ -9,35 +9,13 @@
     <link rel="stylesheet" href="/static/styles/styles_componentes.css">
     <link rel="stylesheet" href="/static/components/menu.html">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="/static/bootstrap/images/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/static/bootstrap/images/favicon/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/static/bootstrap/images/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/static/bootstrap/images/favicon/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/static/bootstrap/images/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/static/bootstrap/images/favicon/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/static/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/static/bootstrap/images/favicon/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/bootstrap/images/favicon/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/static/bootstrap/images/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/bootstrap/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/static/bootstrap/images/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/bootstrap/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/static/bootstrap/images/favicon/manifest.json">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/static/bootstrap/images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-        <!-- Fontes -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -62,95 +40,45 @@
     </div>
   </nav>
 
-    <div class="container mt-5" >
-        <h1 class="mb-4 subtitle">Adicionar Transação</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Adicionar Transação</h1>
 
         <form action="{{ url_for('add_transaction') }}" method="POST">
             <!-- Tipo de Transação -->
             <div class="form-group">
                 <label for="type" class="paragraf">Tipo de Transação</label>
-                <select name="type" id="type" class="form-select paragraf" required style="border-radius: 20px; padding: 10px;">
-                    <option value="receita" class="paragraf" style="color: black;">Receita</option>
-                    <option value="despesa" class="paragraf" style="color: black;">Despesa</option>
+                <select name="type" id="type" class="form-select paragraf" required style="border-radius: 20px;">
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
                 </select>
             </div>
 
-            <!-- Valor da Transação -->
-            <div class="form-group mt-3">
-                <label for="amount" class="paragraf">Valor</label>
-                <input type="text" name="amount" id="amount" class="form-control paragraf" placeholder="Digite o valor" required style="border-radius: 20px; padding: 10px;">
-            </div>
-
-            <!-- Descrição da Transação -->
+            <!-- Descrição -->
             <div class="form-group mt-3">
                 <label for="description" class="paragraf">Descrição</label>
-                <input type="text" name="description" id="description" class="form-control paragraf" placeholder="Descrição da transação" required style="border-radius: 20px; padding: 10px;">
+                <input type="text" name="description" id="description" class="form-control" required style="border-radius: 20px;">
             </div>
 
-            <!-- Categoria da Receita -->
-            <div class="form-group mt-3" id="categoriaReceitaDiv">
-                <label for="categoriaReceita" class="paragraf">Categoria da Receita</label>
-                <select name="categoriaReceita" id="categoriaReceita" class="form-select paragraf" style="border-radius: 20px; padding: 10px;">
-                    <option selected class="paragraf" style="color: black;">Selecione uma categoria</option>
-                    <option value="Salário" class="paragraf" style="color: black;">Salário</option>
-                    <option value="Freelance" class="paragraf" style="color: black;">Freelance</option>
-                    <option value="Investimentos" class="paragraf" style="color: black;">Investimentos</option>
-                </select>
+            <!-- Valor -->
+            <div class="form-group mt-3">
+                <label for="amount" class="paragraf">Valor (R$)</label>
+                <input type="number" name="amount" id="amount" class="form-control" step="0.01" required style="border-radius: 20px;">
             </div>
 
-            <!-- Categoria da Despesa -->
-            <div class="form-group mt-3" id="categoriaDespesaDiv" style="display: none;">
-                <label for="categoriaDespesa" class="paragraf">Categoria da Despesa</label>
-                <select name="categoriaDespesa" id="categoriaDespesa" class="form-select paragraf" style="border-radius: 20px; padding: 10px;">
-                    <option value="" class="paragraf" style="color: black;">Selecione uma categoria</option>
-                    <option value="Alimentação" class="paragraf" style="color: black;">Alimentação</option>
-                    <option value="Transporte" class="paragraf" style="color: black;">Transporte</option>
-                    <option value="Lazer" class="paragraf" style="color: black;">Lazer</option>
-                    <option value="Saúde" class="paragraf" style="color: black;">Saúde</option>
-                    <option value="Educação" class="paragraf" style="color: black;">Educação</option>
-                    <option value="Outros" class="paragraf" style="color: black;">Outros</option>
-                </select>
+            <!-- Data -->
+            <div class="form-group mt-3">
+                <label for="date" class="paragraf">Data</label>
+                <input type="date" name="date" id="date" class="form-control" required style="border-radius: 20px;">
             </div>
 
-            <!-- Botão de Submissão -->
-            <button type="submit" class="btn btn-light mt-4" style="border-radius: 20px; padding: 10px 15px;">Cadastrar Transação</button>
-            <a href="{{ url_for('index') }}" class="btn btn-dark mt-4" style="border-radius: 20px; padding: 10px 15px;">Voltar</a>
+            <!-- Botões de Ação -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Adicionar Transação</button>
+                <a href="{{ url_for('report') }}" class="btn btn-secondary">Voltar aos Relatórios</a>
+            </div>
         </form>
     </div>
 
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-    <script>
-        // Script para alternar a exibição de categorias com base no tipo de transação
-        document.getElementById('type').addEventListener('change', function() {
-            const categoriaReceitaDiv = document.getElementById('categoriaReceitaDiv');
-            const categoriaDespesaDiv = document.getElementById('categoriaDespesaDiv');
-            
-            if (this.value === 'receita') {
-                categoriaReceitaDiv.style.display = 'block';
-                categoriaDespesaDiv.style.display = 'none';
-            } else {
-                categoriaReceitaDiv.style.display = 'none';
-                categoriaDespesaDiv.style.display = 'block';
-            }
-        });
-
-        // Função para formatar o valor como float com 2 casas decimais e adicionar ",00" quando necessário
-        document.getElementById('amount').addEventListener('input', function(event) {
-            let value = event.target.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
-            if (value) {
-                value = (parseInt(value) / 100).toFixed(2).replace(',', '.'); // Formata para moeda
-            } else {
-                value = '0.00';
-            }
-            event.target.value = value;
-        });
-    </script>
-<p></p>
-<p></p>
-<p></p>
-<footer class="footer" style="margin-top: 50px;">
-    <p>Capitall. © 2024</p>
-</footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
