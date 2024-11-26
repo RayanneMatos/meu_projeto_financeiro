@@ -43,6 +43,28 @@
 
 </head>
 <body>
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+     <span class="navbar-brand mb-0 h1"><a class="link-offset-2 link-underline link-underline-opacity-0" href="{{ url_for('index') }}"><h1 class="brand"><img src="/static/bootstrap/images/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">  Capitall</h1></a></span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Seções -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav nav-underline justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{{ url_for('add_transaction') }}">Nova Transação</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link link-light" href="{{ url_for('report') }}">Relatórios</a>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
     <div class="container my-5">
         <h1 class="text-center">Relatório de Transações</h1>
 
@@ -109,11 +131,37 @@
 
         <!-- Botões de navegação -->
         <div class="text-center mt-4">
-            <a href="/" class="btn btn-secondary">Voltar ao Início</a>
-            <a href="/add_transaction" class="btn btn-primary">Adicionar Nova Transação</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">Voltar ao Início</a>
+            <a href= "{{ url_for('add_transaction') }}" class="btn btn-primary">Adicionar Nova Transação</a>
+        <!-- Adicionando a área para a orientação -->
+        <div id="orientacao" class="mt-4 alert alert-info" style="display: none;"></div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Função para gerar orientação
+        function gerarOrientacao(receitaTotal, despesaTotal) {
+            const orientacaoDiv = document.getElementById('orientacao');
+            if (receitaTotal > despesaTotal) {
+                orientacaoDiv.innerText = "Recomendamos investir inicialmente pela reserva de emergência.";
+            } else if (despesaTotal > receitaTotal) {
+                orientacaoDiv.innerText = "Sugerimos congelar os gastos para quitar as dívidas.";
+            } else {
+                orientacaoDiv.innerText = "Economizar para começar a investir.";
+            }
+            orientacaoDiv.style.display = 'block'; // Exibe a orientação
+        }
+
+        // Garantir que os valores sejam numéricos
+        const receitaTotal = parseFloat("{{ receitaTotal }}");
+        const despesaTotal = parseFloat("{{ despesaTotal }}");
+
+        gerarOrientacao(receitaTotal, despesaTotal);
+    </script>
+    
+    <footer class="footer">
+        <p>Capitall. © 2024</p>
+    </footer>
 </body>
 </html>

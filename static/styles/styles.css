@@ -36,7 +36,11 @@ body {
         font-optical-sizing: auto; /* Ajuste automático óptico */
         font-size: 220px; /* Tamanho grande para o título */
         color: #ffffff; /* Cor branca para o texto */
-    }
+        position: relative; /* Necessário para que o z-index funcione */
+        z-index: 1; /* Coloca o título acima do círculo */
+        text-align: center; /* Centraliza o texto, se necessário */
+        }
+        
     
     .nav-link {
         font-family: "Roboto Mono", monospace; /* Fonte monoespaçada para links */
@@ -68,7 +72,7 @@ body {
     }
     .circle {
         width: 540px; /* Define a largura do círculo */
-        height: 275px; /* Define a altura do círculo */
+        height: 400px; /* Define a altura do círculo */
         background-image: radial-gradient(circle, #6832dd, #6AB7ED); /* Gradiente no círculo */
         position: absolute; /* Sobrepõe outros elementos */
         border-radius: 50%; /* Faz o elemento ter bordas arredondadas */
@@ -78,7 +82,7 @@ body {
         top: 0px; /* Posiciona no topo */
         left: 50%; /* Centraliza horizontalmente */
         transform: translateX(-50%); /* Mantém a centralização */
-        z-index: 1; /* Prioriza o círculo sobre outros elementos */
+        z-index: -1; /* Prioriza o círculo sobre outros elementos */
         animation: riseAnimation 1s forwards; /* Aplica a animação de subida */
     }
     

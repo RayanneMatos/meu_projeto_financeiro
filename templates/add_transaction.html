@@ -59,6 +59,31 @@
                 <input type="text" name="description" id="description" class="form-control" required style="border-radius: 20px;">
             </div>
 
+            <!-- Categoria da Receita -->
+            <div class="form-group mt-3" id="categoriaReceitaDiv">
+                <label for="categoriaReceita" class="paragraf">Categoria da Receita</label>
+                <select name="categoriaReceita" id="categoriaReceita" class="form-select paragraf" style="border-radius: 20px; padding: 10px;">
+                    <option selected class="paragraf" style="color: black;">Selecione uma categoria</option>
+                    <option value="Salário" class="paragraf" style="color: black;">Salário</option>
+                    <option value="Freelance" class="paragraf" style="color: black;">Freelance</option>
+                    <option value="Investimentos" class="paragraf" style="color: black;">Investimentos</option>
+                </select>
+            </div>
+
+            <!-- Categoria da Despesa -->
+            <div class="form-group mt-3" id="categoriaDespesaDiv" style="display: none;">
+                <label for="categoriaDespesa" class="paragraf">Categoria da Despesa</label>
+                <select name="categoriaDespesa" id="categoriaDespesa" class="form-select paragraf" style="border-radius: 20px; padding: 10px;">
+                    <option value="" class="paragraf" style="color: black;">Selecione uma categoria</option>
+                    <option value="Alimentação" class="paragraf" style="color: black;">Alimentação</option>
+                    <option value="Transporte" class="paragraf" style="color: black;">Transporte</option>
+                    <option value="Lazer" class="paragraf" style="color: black;">Lazer</option>
+                    <option value="Saúde" class="paragraf" style="color: black;">Saúde</option>
+                    <option value="Educação" class="paragraf" style="color: black;">Educação</option>
+                    <option value="Outros" class="paragraf" style="color: black;">Outros</option>
+                </select>
+            </div>
+
             <!-- Valor -->
             <div class="form-group mt-3">
                 <label for="amount" class="paragraf">Valor (R$)</label>
@@ -79,6 +104,38 @@
         </form>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+    <script>
+        // Script para alternar a exibição de categorias com base no tipo de transação
+        document.getElementById('type').addEventListener('change', function() {
+            const categoriaReceitaDiv = document.getElementById('categoriaReceitaDiv');
+            const categoriaDespesaDiv = document.getElementById('categoriaDespesaDiv');
+            
+            if (this.value === 'receita') {
+                categoriaReceitaDiv.style.display = 'block';
+                categoriaDespesaDiv.style.display = 'none';
+            } else {
+                categoriaReceitaDiv.style.display = 'none';
+                categoriaDespesaDiv.style.display = 'block';
+            }
+        });
+
+        // Função para formatar o valor como float com 2 casas decimais e adicionar ",00" quando necessário
+        document.getElementById('amount').addEventListener('input', function(event) {
+            let value = event.target.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+            if (value) {
+                value = (parseInt(value) / 100).toFixed(2).replace(',', '.'); // Formata para moeda
+            } else {
+                value = '0.00';
+            }
+            event.target.value = value;
+        });
+    </script>
+
+
+<footer class="footer" style="margin-top: 50px;">
+    <p>Capitall. © 2024</p>
+</footer>
+
 </body>
 </html>
